@@ -9,12 +9,11 @@ const { web } = credentials;
 import openurl from 'openurl'
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000', 
-    methods: 'GET,POST', 
-    allowedHeaders: 'Content-Type, Authorization', 
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // If you need to allow cookies or credentials
   };
-  
-  app.use(cors(corsOptions));
 app.use(json());
 
 const storage = diskStorage({
