@@ -8,7 +8,13 @@ const { videos, authenticate } = pkg;
 const { web } = credentials;
 import openurl from 'openurl'
 const app = express();
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:3000', 
+    methods: 'GET,POST', 
+    allowedHeaders: 'Content-Type, Authorization', 
+  };
+  
+  app.use(cors(corsOptions));
 app.use(json());
 
 const storage = diskStorage({
