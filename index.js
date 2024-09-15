@@ -14,6 +14,7 @@ const corsOptions = {
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true // If you need to allow cookies or credentials
   };
+  app.use(cors(corsOptions))
 app.use(json());
 
 const storage = diskStorage({
