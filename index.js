@@ -1,15 +1,20 @@
-import credentials from './credentials.json' with { type: 'json' };
+import * as dotenv from 'dotenv';
+dotenv.config();
+const clientId = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
+const redirectUris = process.env.REDIRECT_URIS
+// import credentials from './credentials.json' with { type: 'json' };
 import express, { json } from 'express';
 import cors from 'cors';
-import { createReadStream } from 'fs';
+import { createReadStream } from 'fs'; 
 import multer, { diskStorage } from 'multer';
-import pkg from 'youtube-api';
+import pkg from 'youtube-api'; 
 const { videos, authenticate } = pkg;
-const { web } = credentials;
+// const { web } = credentials; 
 import openurl from 'openurl'
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000',   
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true // If you need to allow cookies or credentials
@@ -106,11 +111,18 @@ app.get('/oauth2callback', (req, res) => {
   });
 });
 
+// const oAuth = authenticate({
+//   type: 'oauth',
+//   client_id: web.client_id,
+//   client_secret: web.client_secret,
+//   redirect_url: web.redirect_uris
+// });
+
 const oAuth = authenticate({
   type: 'oauth',
-  client_id: web.client_id,
-  client_secret: web.client_secret,
-  redirect_url: web.redirect_uris[0]
+  client_id: process.env.CLIENT_ID,
+  client_secret: process.env.CLIENT_SECRET,
+  redirect_url: process.env.REDIRECT_URIS
 });
 
 app.listen(8000, () => {
