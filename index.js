@@ -10,7 +10,7 @@ import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { connectDB } from './db/db.js';
 import uploadRoutes from './routes/uploadRoutes.js'
-
+import userRoute from './routes/userRoutes.js'
 const { videos, authenticate } = pkg;
  
 const app = express(); 
@@ -26,6 +26,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(json());
 app.use('/api/v1',uploadRoutes)
+app.use('/api/user',userRoute)
 
 // Configure multer to use /tmp directory for uploads because other wise in vercel it will show error read only 
 const storage = diskStorage({
