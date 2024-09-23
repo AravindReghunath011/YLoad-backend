@@ -49,14 +49,14 @@ const oAuth = authenticate({
     redirect_url: process.env.REDIRECT_URIS
 });
  
-console.log(process.env.AWS_ACCESS_KEY)
+console.log(process.env.AWS_ACCESS_KEY_ID)
 console.log(process.env.AWS_SECRET_KEY)
 console.log(process.env.AWS_REGION)
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION, // specify your AWS region
     credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY, // your AWS access key
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID, // your AWS access key
         secretAccessKey: process.env.AWS_SECRET_KEY // your AWS secret key
     },
     // The signature version is automatically set to "v4" 
