@@ -107,7 +107,7 @@ router.get('/test',(req,res)=>{
 
 
 router.get('/getuploads',async(req,res)=>{
-    let id = req.params.email
+    let id = req.query.email
     if(!id){
         res.json({
             message:'id is required'

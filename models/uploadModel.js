@@ -34,6 +34,8 @@ const UploadSchema = new mongoose.Schema({
     default:''
   },
   
+},{
+  timestamps:true
 });
 
 // Create the User model

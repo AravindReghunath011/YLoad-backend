@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-});
+},
+{timestamps:true});
 
 // Create the User model
 const User = mongoose.model('Users', userSchema);
