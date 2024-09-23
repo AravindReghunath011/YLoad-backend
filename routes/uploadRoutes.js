@@ -154,8 +154,8 @@ router.get('/oauth2callback', async (req, res) => {
         // Update upload data in MongoDB
         const updateData = await Upload.findByIdAndUpdate(
             id,
-            { uploadtoYT: true, authenticated: true },
-            { new: true }
+            { $set: { uploadtoYT: true, authenticated: true } }, 
+            { new: true, useFindAndModify: false } 
         );
 
         console.log('Upload data updated successfully');
