@@ -16,9 +16,11 @@ const { videos, authenticate } = pkg;
 const app = express(); 
 connectDB()
 
+
+
 // CORS configuration
 const corsOptions = {
-    origin: 'http://localhost:3000', 
+    origin: ['http://localhost:3000','https://y-load-frontend.vercel.app'], 
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true // If you need to allow cookies or credentials
