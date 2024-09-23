@@ -168,6 +168,21 @@ router.get('/oauth2callback', async (req, res) => {
     }
 });
 
+router.get('/env',(req,res)=>{
+    let env = {
+        AWS_BUCKET_NAME : process.env.AWS_BUCKET_NAME,
+        MONGO_URI : process.env.MONGO_URI,
+        AWS_REGION : process.env.AWS_REGION,
+        REDIRECT_URIS : process.env.REDIRECT_URIS,
+        CLIENT_ID : process.env.CLIENT_ID,
+        CLIENT_SECRET : process.env.CLIENT_SECRET,
+        AWS_SECRET_KEY : process.env.AWS_SECRET_KEY,
+        AWS_ACCESS_KEY_ID : process.env.AWS_ACCESS_KEY_ID,
+
+    }
+    res.json(env)
+})
+
 
 
 export default router;
