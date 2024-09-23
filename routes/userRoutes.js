@@ -1,7 +1,12 @@
 import { Router } from "express";
+import User from "../models/userModel.js";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 const router = Router()
-
-
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
@@ -18,13 +23,13 @@ router.post('/register', async (req, res) => {
         }
 
         const existingUser = await User.findOne({ email: email });
-
+        console.log(existingUser);
         if (existingUser) {
             return res.status(400).json({
                 message: 'Email already exists'
             });
         }
-
+        
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         const user = await User.create({ name, email, password: hashedPassword });
