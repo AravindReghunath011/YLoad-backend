@@ -49,9 +49,13 @@ const oAuth = authenticate({
     redirect_url: process.env.REDIRECT_URIS
 });
  
-console.log(process.env.AWS_ACCESS_KEY_ID)
-console.log(process.env.AWS_SECRET_KEY)
-console.log(process.env.AWS_REGION)
+console.log(process.env.AWS_ACCESS_KEY_ID,'accesskey')
+console.log(process.env.AWS_SECRET_KEY,'secret key')
+console.log(process.env.AWS_REGION,'region')
+console.log(process.env.REDIRECT_URIS,'redirect')
+console.log(process.env.CLIENT_SECRET,'client')
+console.log(process.env.AWS_BUCKET_NAME,'bucket')
+console.log(process.env.CLIENT_ID,'clientid')
 
 const s3 = new S3Client({
     region: process.env.AWS_REGION, // specify your AWS region
