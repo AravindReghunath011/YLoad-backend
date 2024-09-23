@@ -29,6 +29,10 @@ const UploadSchema = new mongoose.Schema({
     type: String,
     default:''
   },
+  youtubeAccount: {
+    type: String,
+    default:''
+  },
   
 });
 

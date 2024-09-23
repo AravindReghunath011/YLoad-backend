@@ -2,7 +2,7 @@ import { Router } from "express";
 import User from "../models/userModel.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-
+import Upload from "../models/uploadModel.js";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -99,6 +99,34 @@ router.post('/login',async(req,res)=>{
     }
 })
 
+router.get('/test',(req,res)=>{
+    res.json({
+        message:'working successfully'
+    })
+})
+
+
+router.get('/getuploads',async(req,res)=>{
+    let id = req.params.email
+    if(!id){
+        res.json({
+            message:'id is required'
+        })
+    }
+    try {
+
+        let uploads = await Upload.find({uploader:email})
+        res.status(200).json({
+            uploads:uploads
+        })
+        
+    } catch (error) {
+        res.status(500).json({
+            message:error.message
+        })
+    }
+    
+})
 
 
 router.post('/refresh-token', async (req, res) => {
