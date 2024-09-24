@@ -24,7 +24,7 @@ const s3 = new S3Client({
     region: process.env.AWS_REGION,
     credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_KEY
+        secretAccessKey: process.env.AWS_SECRET_KEY_ID
     }
 });
 
@@ -176,7 +176,7 @@ router.get('/env',(req,res)=>{
         REDIRECT_URIS : process.env.REDIRECT_URIS,
         CLIENT_ID : process.env.CLIENT_ID,
         CLIENT_SECRET : process.env.CLIENT_SECRET,
-        AWS_SECRET_KEY : process.env.AWS_SECRET_KEY,
+        AWS_SECRET_KEY_ID : process.env.AWS_SECRET_KEY_ID,
         AWS_ACCESS_KEY_ID : process.env.AWS_ACCESS_KEY_ID,
 
     }
