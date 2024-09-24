@@ -52,7 +52,7 @@ router.post('/presignedurl', async (req, res) => {
         res.json({ uploadUrl, Key, id: uploadDocument._id });
     } catch (err) {
         console.error("Error generating presigned URL:", err);
-        res.status(500).send("Error generating presigned URL");
+        res.status(500).send("Error generating presigned URL" , err);
     }
 });
 
